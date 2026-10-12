@@ -17,8 +17,11 @@ from pptx.util import Emu, Inches, Pt
 
 HERE = Path(__file__).resolve().parent
 SLIDES = HERE / "web" / "slides"
-VIDEO = HERE.parent / "figuras" / "escena01" / "scene01_autoresearch_log.mp4"
-POSTER = HERE.parent / "figuras" / "escena01" / "scene01_still.png"
+RENDER = HERE.parent / "figuras" / "render"          # S01.mp4 + S01.png, …, F03.png, F10.png, F11.png
+VIDEO = RENDER / "S01.mp4"
+POSTER = RENDER / "S01.png"
+MEDIA = {"s03": "F03", "s04": "S04", "s06": "S06", "s07": "S07", "s09": "S09", "s11": "F11",
+         "s16": "S16", "s17": "S17", "s18": "S18"}
 
 ORDER = ["cover"] + [f"s{i:02d}" for i in range(1, 20)] + ["jueces", "s20", "s21"]
 
@@ -158,6 +161,15 @@ def placeholder(slide, d, x=X0, y=Y_BODY, w=CW, h=3.45, scene=None):
          align=PP_ALIGN.CENTER, name="Figure description")
 
 
+def media(slide, key, x, y, w, h):
+    """Video (mp4 con su póster png) o figura png, en la caja dada."""
+    mp4, png = RENDER / f"{key}.mp4", RENDER / f"{key}.png"
+    if mp4.exists():
+        return slide.shapes.add_movie(str(mp4), Inches(x), Inches(y), Inches(w), Inches(h),
+                                      poster_frame_image=str(png), mime_type="video/mp4")
+    return slide.shapes.add_picture(str(png), Inches(x), Inches(y), Inches(w), Inches(h))
+
+
 def notes(slide, d):
     if d["notes"]:
         slide.notes_slide.notes_text_frame.text = d["notes"]
@@ -250,11 +262,13 @@ def build():
     text(s, X0, 8.2, 12.6, 0.9, html.unescape(m.group(1)), size=23, bold=True, color=NAVY, name="Thesis")
     footer(s, d); notes(s, d)
 
-    # placeholder slides
-    for sid in ["s03", "s04", "s06", "s07", "s09", "s11", "s16", "s17", "s18"]:
+    # escenas y figuras (8:3, oscuras, como una pantalla sobre la diapositiva blanca)
+    for sid, key in MEDIA.items():
         s, d = S[sid], D[sid]
         header(s, d)
-        placeholder(s, d)
+        mh = 4.75                      # alineado a la izquierda: deja libre la onda azul de la plantilla
+        mw = mh * 1920 / 720
+        media(s, key, X0, Y_BODY, mw, mh)
         footer(s, d); notes(s, d)
 
     # s05 three stages
@@ -281,14 +295,15 @@ def build():
     # s10 deep research inside: figure + three stats
     s, d = S["s10"], D["s10"]
     header(s, d)
-    placeholder(s, d, h=2.35, scene=False)
+    fw = 12.6
+    media(s, "F10", X0, 4.15, fw, fw * 440 / 1920)
     stats = [("+90.2%", "mejor que un solo agente en su evaluación interna", AMBER_TXT),
              ("~15×", "más tokens que una conversación de chat", NAVY),
              ("80%", "del desempeño lo explica solo el uso de tokens", NAVY)]
     for k, (v, c, col) in enumerate(stats):
         x = X0 + k * 4.45
-        text(s, x, 6.8, 4.2, 0.9, v, size=56, bold=True, color=col)
-        text(s, x, 7.7, 4.2, 0.9, c, size=19, color=BODY)
+        text(s, x, 7.25, 4.2, 0.9, v, size=56, bold=True, color=col)
+        text(s, x, 8.15, 4.2, 0.9, c, size=19, color=BODY)
     footer(s, d, w=11.5); notes(s, d)
 
     # s12 skill anatomy

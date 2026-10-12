@@ -120,27 +120,30 @@ figures/
 
 ## 2. Índice de figuras
 
+> **Estado (oct. 2026):** todas construidas; código en `escenas/` y `escena01/`, renders en `render/`.
+> Diferencias con este brief: S04 no dibuja V ni el mapa de calor completo; S06 cierra con una frase en vez de dos BigNumber; S07 usa parches de 32 px sobre 448 px (14 × 14 = 196) y no dibuja la proyección lineal; S17 no muestra la etiqueta «debate».
+
 Escena = animación (MP4 + still). Figura = PNG fijo. Nativa = se construye directamente en el deck,
 sin recurso. Captura = la toma el expositor; tú solo preparas el marco.
 
 | ID | Diap. | Tipo | Qué muestra | Estado |
 | --- | --- | --- | --- | --- |
-| C00 | — | Componente | Motivo del ciclo (propone → juzga → actualiza), reutilizable | **Construir primero** |
-| S01 | 1 | Escena | Registro de autoresearch: conservado vs descartado, la pérdida baja | Hecha en inglés — **re-renderizar en español** con `results.tsv` real |
+| C00 | — | Componente | Motivo del ciclo (propone → juzga → actualiza), reutilizable | Hecho (`escenas/common.py`, `c00_sheet.py`) |
+| S01 | 1 | Escena | Registro de autoresearch: conservado vs descartado, la pérdida baja | Hecha en español · datos ilustrativos hasta `results.tsv` real |
 | — | 2 | Nativa | Tabla de los seis ciclos y sus jueces | Hecha en el deck |
-| F03 | 3 | Figura | Top-8 de probabilidades del siguiente token, de un modelo real | Por construir |
-| S04 | 4 | Escena | Una consulta atiende a cada clave; los pesos mezclan los valores | Por construir |
+| F03 | 3 | Figura | Top-8 de probabilidades del siguiente token, de un modelo real | Hecha · ilustrativa hasta correr `datos_siguiente_token.py` |
+| S04 | 4 | Escena | Una consulta atiende a cada clave; los pesos mezclan los valores | Hecha · pesos ilustrativos hasta correr `datos_atencion.py` |
 | — | 5 | Nativa | Tres etapas del entrenamiento y su juez | Hecha en el deck |
-| S06 | 6 | Escena | 8 muestras, el verificador las marca, la política se mueve a la correcta | Por construir |
-| S07 | 7 | Escena | Imagen → parches → tokens junto a tokens de texto | Por construir |
+| S06 | 6 | Escena | 8 muestras, el verificador las marca, la política se mueve a la correcta | Hecha (calculada) |
+| S07 | 7 | Escena | Imagen → parches → tokens junto a tokens de texto | Hecha · imagen sintética hasta `input.jpg` |
 | — | 8 | Nativa | 81% vs 20% (encuesta de adopción) | Hecha en el deck |
-| S09 | 9 | Escena | Ciclo del agente con herramientas; las herramientas son el juez | Por construir |
-| F10 | 10 | Figura | Arquitectura del sistema multiagente de deep research de Anthropic | Por construir (**nueva**) |
-| F11 | 11 | Figura | El harness: el modelo al centro y lo que lo rodea | Por construir (**nueva**) |
+| S09 | 9 | Escena | Ciclo del agente con herramientas; las herramientas son el juez | Hecha · traza ilustrativa |
+| F10 | 10 | Figura | Arquitectura del sistema multiagente de deep research de Anthropic | Hecha |
+| F11 | 11 | Figura | El harness: el modelo al centro y lo que lo rodea | Hecha |
 | — | 12–15 | Nativas | Anatomía de un skill, cómo crearlo, galería, harness = juez | Hechas en el deck |
-| S16 | 16 | Escena | Ciclo maestro de autoresearch con el diff de `train.py` | Por construir |
-| S17 | 17 | Escena | Torneo de hipótesis con Elo; la ganadora va al laboratorio | Por construir |
-| S18 | 18 | Escena | Búsqueda evolutiva juzgada por un evaluador; cierra con ERA y AlphaEvolve | Por construir |
+| S16 | 16 | Escena | Ciclo maestro de autoresearch con el diff de `train.py` | Hecha · mismo registro que S01 |
+| S17 | 17 | Escena | Torneo de hipótesis con Elo; la ganadora va al laboratorio | Hecha · torneo ilustrativo, Elo calculado |
+| S18 | 18 | Escena | Búsqueda evolutiva juzgada por un evaluador; cierra con ERA y AlphaEvolve | Hecha (calculada) |
 | — | 19–22 | Nativas | Tres números (AI Scientist, Kosmos, APE), evaluar al juez (58/74/84%), límites, cierre | Hechas en el deck |
 
 Totales: 1 componente, 7 escenas nuevas + 1 re-render, 3 figuras fijas.

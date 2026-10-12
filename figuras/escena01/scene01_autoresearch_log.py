@@ -1,5 +1,5 @@
 """
-Scene 1 - "An AI agent can now run a research loop overnight, without us"
+Escena 1 — «Un agente de IA ya puede correr un ciclo de investigación de noche, sin nosotros» (todo el texto en pantalla en español)
 AI for Research talk, slide 1.
 
 An autoresearch-style log scrolls in a terminal. Each experiment is stamped
@@ -63,25 +63,25 @@ HIDE_DEMO_LABEL = os.environ.get("HIDE_DEMO_LABEL") == "1"
 
 # ---------------------------------------------------------------- data
 DEMO_CHANGES = [
-    "lr 3e-4 → 6e-4", "warmup 100 → 300 steps", "RMSNorm before attn",
+    "lr 3e-4 → 6e-4", "warmup 100 → 300 pasos", "RMSNorm antes de atención",
     "GELU → SwiGLU", "batch 32 → 48", "weight decay 0.1 → 0.05",
-    "rotary base 10k → 50k", "depth 8 → 10 layers", "width 512 → 640",
-    "dropout 0.1 → 0.0", "cosine → linear decay", "grad clip 1.0 → 0.5",
-    "add QK-norm", "tie embeddings", "Muon for matrices",
+    "rotary base 10k → 50k", "capas 8 → 10", "ancho 512 → 640",
+    "dropout 0.1 → 0.0", "coseno → decaimiento lineal", "grad clip 1.0 → 0.5",
+    "agregar QK-norm", "atar embeddings", "Muon en matrices",
     "AdamW β2 0.95 → 0.98", "seq len 512 → 1024", "head dim 64 → 128",
     "zero-init out proj", "z-loss 1e-4", "ReLU² MLP", "value residual",
-    "softcap logits 30", "init std 0.02 → 0.01", "EMA of weights",
-    "remove biases", "parallel attn + MLP", "GQA, 4 groups",
+    "softcap logits 30", "init std 0.02 → 0.01", "EMA de pesos",
+    "quitar sesgos", "atención + MLP en paralelo", "GQA, 4 grupos",
     "WSD lr schedule", "batch 48 → 64", "MLP ratio 4 → 3",
-    "embedding lr ×2", "untie lm head", "lr 6e-4 → 8e-4",
-    "warmdown 20% → 35%", "depth 10 → 12 layers",
+    "embedding lr ×2", "desatar lm head", "lr 6e-4 → 8e-4",
+    "warmdown 20% → 35%", "capas 10 → 12",
 ]
 
 
 def demo_log(n: int = 72, seed: int = 14) -> list[dict]:
     """Illustrative log: a baseline, then edits that are kept only if they beat the best."""
     rng = random.Random(seed)
-    rows = [{"desc": "baseline", "loss": 1.0000, "status": "keep"}]
+    rows = [{"desc": "modelo base", "loss": 1.0000, "status": "keep"}]
     best = 1.0000
     crash_at = {23, 51}
     for i in range(1, n):
@@ -124,7 +124,7 @@ def load_log(path: Path) -> tuple[list[dict], str]:
             if status == "keep" and loss is not None:
                 best = min(best, loss)
             desc = (r.get(desc_col) or "").strip() if desc_col else ""
-            rows.append({"desc": desc or ("baseline" if i == 0 else f"experiment {i}"),
+            rows.append({"desc": desc or ("modelo base" if i == 0 else f"experimento {i}"),
                          "loss": loss, "status": status})
     if not rows:
         raise ValueError(f"{path.name} has no rows")
@@ -173,7 +173,7 @@ class AutoresearchLog(Scene):
         y_first = divider.get_y() - 0.42
         y_status = term.get_bottom()[1] + 0.32
 
-        status_line = self._status(f"▶ waiting for first run", fs, x_text, y_status)
+        status_line = self._status("▶ esperando la primera corrida", fs, x_text, y_status)
 
         # ---------- chart
         axes = Axes(x_range=[0, n + 1, 10], y_range=[y_min, y_max, (y_max - y_min) / 4],
@@ -182,24 +182,24 @@ class AutoresearchLog(Scene):
         axes.move_to([4.95, 0.15, 0])
         y_lab = Text(metric, font=FONT, font_size=18, color=MUTED)
         y_lab.next_to(axes.y_axis.get_top(), UP, buff=0.12).align_to(axes.y_axis, LEFT)
-        x_lab = Text("experiment →", font=FONT, font_size=18, color=MUTED)
+        x_lab = Text("experimento →", font=FONT, font_size=18, color=MUTED)
         x_lab.next_to(axes.x_axis.get_right(), DOWN, buff=0.14).align_to(axes.x_axis.get_right(), RIGHT)
         hi_lab = Text(f"{hi:.3f}", font=FONT, font_size=16, color=GRAY)
         hi_lab.next_to(axes.c2p(0, hi), LEFT, buff=0.1)
         lo_lab = Text(f"{lo:.3f}", font=FONT, font_size=16, color=GRAY)
         lo_lab.next_to(axes.c2p(0, lo), LEFT, buff=0.1)
         legend = VGroup(
-            Dot(radius=0.06, color=AMBER), Text("kept", font=FONT, font_size=16, color=AMBER),
-            Dot(radius=0.06, color=GRAY), Text("discarded", font=FONT, font_size=16, color=GRAY),
+            Dot(radius=0.06, color=AMBER), Text("conservado", font=FONT, font_size=16, color=AMBER),
+            Dot(radius=0.06, color=GRAY), Text("descartado", font=FONT, font_size=16, color=GRAY),
         ).arrange(RIGHT, buff=0.12)
         legend[2].shift(RIGHT * 0.2)
         legend[3].shift(RIGHT * 0.2)
-        legend.next_to(axes, DOWN, buff=0.18).align_to(axes.x_axis, LEFT)
+        legend.next_to(axes, UP, buff=0.12).align_to(axes.x_axis.get_right(), RIGHT)
 
         demo_label = None
         if demo and not HIDE_DEMO_LABEL:
-            demo_label = Text("illustrative data", font=FONT, font_size=14, color=GRAY)
-            demo_label.move_to([axes.x_axis.get_right()[0], legend.get_y() - 0.34, 0], aligned_edge=RIGHT)
+            demo_label = Text("datos ilustrativos", font=FONT, font_size=14, color=GRAY)
+            demo_label.move_to([axes.x_axis.get_right()[0], x_lab.get_y() - 0.34, 0], aligned_edge=RIGHT)
 
         # ---------- intro
         intro = [FadeIn(term), FadeIn(dots), FadeIn(title), Create(divider),
@@ -226,7 +226,7 @@ class AutoresearchLog(Scene):
             loss_txt = f"{loss:.4f}" if loss is not None else "  —   "
             main = Text(f"#{i:02d}  {row['desc'][:27]:<27}  {loss_txt}",
                         font=FONT, font_size=fs, color=TEXT)
-            tag_word = {"keep": "kept", "discard": "discarded", "crash": "crash"}[status]
+            tag_word = {"keep": "conservado", "discard": "descartado", "crash": "falló"}[status]
             tag_col = {"keep": AMBER, "discard": GRAY, "crash": CRASH}[status]
             tag = Text(tag_word, font=FONT, font_size=fs, color=tag_col, weight=BOLD)
             y = y_first - min(i, self.VISIBLE - 1) * self.SPACING
@@ -242,7 +242,7 @@ class AutoresearchLog(Scene):
                     lines[j].animate.shift(UP * self.SPACING) for j in range(i - self.VISIBLE + 1, i)
                 ]
 
-            new_status = self._status(f"▶ running #{i:02d} · 5:00 training budget", fs, x_text, y_status)
+            new_status = self._status(f"▶ corriendo #{i:02d} · presupuesto de 5:00", fs, x_text, y_status)
 
             # chart marks for this experiment
             marks = []
@@ -292,16 +292,16 @@ class AutoresearchLog(Scene):
             lines.append(line)
             chart_marks.add(*marks)
 
-        done = self._status(f"■ queue empty · {n} runs logged", fs, x_text, y_status)
+        done = self._status(f"■ cola vacía · {n} corridas registradas", fs, x_text, y_status)
         self.play(FadeOut(status_line), FadeIn(done), run_time=0.3)
         self.wait(0.6)
 
         # ---------- finale: dim the evidence, show the counter
         hours = n * MINUTES_PER_RUN / 60
-        hours_txt = f"{hours:.0f} hours" if hours >= 1.5 else f"{hours * 60:.0f} minutes"
-        counter = Text(f"{n} experiments · {hours_txt} · 0 humans", font=FONT,
+        hours_txt = f"{hours:.0f} horas" if hours >= 1.5 else f"{hours * 60:.0f} minutos"
+        counter = Text(f"{n} experimentos · {hours_txt} · 0 humanos", font=FONT,
                        font_size=46, color=TEXT, weight=BOLD)
-        sub = Text(f"{metric}  {first_loss:.4f} → {best:.4f}   ·   {kept} changes kept",
+        sub = Text(f"{metric}  {first_loss:.4f} → {best:.4f}   ·   {kept} cambios conservados",
                    font=FONT, font_size=24, color=AMBER)
         card = VGroup(counter, sub).arrange(DOWN, buff=0.3)
         backing = Rectangle(width=config.frame_width, height=config.frame_height,

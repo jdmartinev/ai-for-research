@@ -6,6 +6,8 @@ media/
 # LibreOffice / renders
 *.pdf
 render/
+!figuras/render/
+media_final/
 ~$*.pptx
 
 # Demo outputs (large, regenerated per run)
