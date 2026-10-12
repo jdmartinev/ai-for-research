@@ -1,0 +1,26 @@
+<section id="s20" data-transition="fade" style="background:#141D2F;color:#ECEEF0;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#F2A541">Parte 5 · Límites</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:600;line-height:1.1;color:#ECEEF0">Todos los ciclos fallan igual: con un juez débil o fácil de engañar</h2>
+<div style="flex:1;display:grid;grid-template-columns:repeat(2, 1fr);gap:24px">
+<div style="background:#1E2A40;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:24px">
+<h3 style="font-size:32px;font-weight:600;color:#ECEEF0">Cómo se rompe</h3>
+<ul style="font-size:28px;line-height:1.5;color:#B9C3CF">
+<li><b>Sin juez:</b> citas inventadas</li>
+<li><b>Juez engañado:</b> reward hacking</li>
+<li><b>Juez con fuga:</b> datos de prueba en el entrenamiento</li>
+<li><b>Entrada envenenada:</b> prompt injection</li>
+</ul>
+</div>
+<div style="background:#1E2A40;border:2px solid #F2A541;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:24px">
+<h3 style="font-size:32px;font-weight:600;color:#F2A541">Cuatro checks que ayudan</h3>
+<ul style="font-size:28px;line-height:1.5;color:#B9C3CF">
+<li>Un agente nuevo ataca los cambios</li>
+<li>Un modelo de otro laboratorio lo revisa</li>
+<li>El agente te hace preguntas sobre el cambio</li>
+<li>Tú reimplementas el resultado principal</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7A8699">21 · Checks adaptados de Bäckman (2026) · Dell'Acqua et al. (2026), Organization Science</p>
+<aside>Vuelve a la diapositiva 2: cada falla es una falla del juez. Las citas inventadas son un ciclo sin juez: en el estudio de OpenScholar (Asai et al., Nature 2026), GPT-4o sin búsqueda inventó citas en el 78–90% de los casos al pedirle literatura reciente; el reward hacking es un juez que el agente aprendió a engañar; la fuga de datos es un juez que ya vio la respuesta; el prompt injection envenena lo que el agente observa. Los checks van de más barato a más caro: minutos para los tres primeros, horas para reimplementar; guarda eso para tus tablas principales. Un segundo modelo de la misma familia comparte los mismos puntos ciegos: usa uno de otro laboratorio. La frontera irregular (Dell'Acqua et al., 758 consultores de BCG): dentro de la frontera de la IA, 12.2% más tareas y 25.1% más rápido; fuera de ella, 19% menos probabilidad de acertar. Sin un juez propio no sabes de qué lado estás. Menciona la política de EAFIT sobre uso de IA y autoría, y la regla práctica de divulgación: decláralo donde aparezca tu nombre.</aside>
+</section>

@@ -1,0 +1,15 @@
+# Python / Manim
+__pycache__/
+*.pyc
+media/
+
+# LibreOffice / renders
+*.pdf
+render/
+~$*.pptx
+
+# Demo outputs (large, regenerated per run)
+demo-exo-deep-research/salidas/*
+!demo-exo-deep-research/salidas/.gitkeep
+
+.DS_Store
