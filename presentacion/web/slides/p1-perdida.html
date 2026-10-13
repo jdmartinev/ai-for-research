@@ -1,0 +1,8 @@
+<section id="p1-perdida" data-transition="fade" style="background:#0F1626;color:#ECEEF0;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#F2A541">Parte 1 · Cómo funcionan</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:600;line-height:1.1;color:#ECEEF0">Aprender es equivocarse menos: la pérdida mide qué tan sorprendido quedó el modelo</h2>
+<img src="/_blob/04cb743ed606b4819aa8c0bd74735526" data-video="/_blob/951fa0132118030ba0f540b6e9274356" alt="El modelo dio poca probabilidad al token correcto; la pérdida es alta; tras ajustar, la probabilidad sube y la pérdida baja" style="width:1466px;height:549px;object-fit:contain">
+<p style="position:absolute;right:128px;top:128px;width:720px;font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-align:right;color:#7A8699">Juez · <span style="color:#F2A541">el siguiente token</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7A8699">8 · Pérdida de entropía cruzada: −log p(token correcto)</p>
+<aside>Aquí está el primer juez de la charla. En el entrenamiento se tapa la palabra siguiente de un texto real y se le pide al modelo que la prediga. La pérdida es menos el logaritmo de la probabilidad que le dio a la correcta: si le dio 5%, la pérdida es alta; si le dio 90%, casi cero. El texto mismo es el juez.</aside>
+</section>

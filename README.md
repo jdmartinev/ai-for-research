@@ -17,33 +17,44 @@ trabajo pasa de producir resultados a juzgarlos.
 | [`demo-exo-deep-research/`](demo-exo-deep-research/) | Sistema de deep research multiagente para Claude Code sobre exoesqueletos: líder, investigadores en paralelo, verificador de citas y juez con rúbrica |
 | [`revision-literatura/`](revision-literatura/) | Revisión de literatura con las 21 fuentes de la charla, verificadas contra los originales |
 
-## Estructura de la charla (≈39 min)
+## Estructura de la charla (56 diapositivas, ~45 s cada una)
 
 | Diap. | Parte | Idea | Juez |
 | --- | --- | --- | --- |
 | 1–2 | Gancho y mapa | Un agente ya investiga solo; seis ciclos, una forma | — |
-| 3–7 | 1 · Cómo funcionan | Siguiente token, atención, de simulador a asistente, razonamiento, multimodalidad | token → humanos → verificador |
-| 8–10 | 2 · Agentes | Adopción (81% vs 20%), el ciclo del agente, deep research por dentro | las herramientas |
-| 11–15 | 3 · Harness y skills | El harness, qué es un skill, cómo crearlo, galería, harness = diseñar el juez | tú, en reglas y checks |
-| 16–19 | 4 · IA que investiga | autoresearch, Co-Scientist, ERA y AlphaEvolve, sistemas de punta a punta | tu métrica |
-| 20–22 | 5 · Límites y cierre | Hasta el juez necesita un juez; cómo fallan los ciclos; qué hacer el lunes | — |
+| 3–23 | 1 · Cómo funcionan | Tokens, siguiente token, muestreo, embeddings; pérdida, gradiente y descenso; atención, bloque y pila del transformer; ventana de contexto; leyes de escala; preentrenamiento, ajuste fino, RLHF, razonamiento, multimodal | el token → humanos → verificador |
+| 24–34 | 2 · De LLM a agente | Qué cambió, herramientas como texto, ciclo del agente, por qué ahora, deep research por dentro, cómo se mide y se entrena, búsqueda con embeddings | las herramientas |
+| 35–44 | 3 · El harness | El harness junta todo lo anterior: CLAUDE.md, contexto, permisos, skills (carga progresiva, anatomía, crear, galería), evaluación | tú, en reglas y checks |
+| 45–52 | 4 · IA que investiga | autoresearch y program.md, Co-Scientist (agentes, torneo, laboratorio), ERA y AlphaEvolve, punta a punta, demo del exoesqueleto | tu métrica |
+| 53–55 | 5 · Límites y cierre | El juez del juez, cómo fallan los ciclos, qué hacer el lunes | — |
 
 ## Cómo regenerar la presentación
 
+Todo el contenido (titulares, cuerpo, fuentes y notas del expositor) vive en
+`presentacion/spec.py`. De ahí salen el deck web y el `.pptx`:
+
 ```bash
 pip install python-pptx
-python presentacion/build_pptx.py
+cd presentacion
+python render_html.py     # → web/deck.json y web/slides/*.html (deck web)
+python render_pptx.py     # → IA-para-la-investigacion_Simposio-Somer.pptx (plantilla Somer)
 ```
 
-El script toma los textos (titulares, notas del expositor, pies con fuentes) de
-`presentacion/web/slides/*.html`, así que se edita el texto ahí y se regenera el `.pptx`.
-La plantilla base (`presentacion/plantilla/base_23_diapositivas.pptx`) ya tiene los fondos del
-simposio duplicados para las 23 diapositivas.
+`render_pptx.py` inserta los videos de `figuras/render/` (arrancan solos al llegar a la
+diapositiva) y las figuras PNG. `assets.json` guarda las direcciones de los videos en el deck web.
 
 ## Escenas y figuras
 
 | Diap. | Recurso | Archivo | Datos |
 | --- | --- | --- | --- |
+| 4 | Tokens | `escenas/s_tokens.py` | tokenizador real (Tekken de Mistral), vía `datos_tokens.py` |
+| 6 | Muestreo y temperatura | `escenas/s_muestreo.py` | ilustrativos; temperatura calculada |
+| 7 | Embeddings | `escenas/s_embeddings.py` | posiciones ilustrativas |
+| 8–10 | Pérdida, gradiente, descenso | `escenas/s_perdida.py`, `s_gradiente.py`, `s_descenso.py` | pérdidas de juguete, calculadas |
+| 14–15 | Bloque y pila del transformer | `escenas/s_bloque.py`, `s_pila.py` | ilustrativos |
+| 16 | F16 ventana de contexto | `escenas/f16_ventana.py` | segmentos ilustrativos |
+| 17 | F17 leyes de escala | `escenas/f17_escala.py` | calculadas con el ajuste de Chinchilla |
+| 33 | F32 BrowseComp | `escenas/f32_browsecomp.py` | Wei et al. (2025), vía Asai |
 | 1 | S01 registro de autoresearch | `escena01/scene01_autoresearch_log.py` | ilustrativos hasta poner `results.tsv` |
 | 3 | F03 siguiente token | `escenas/f03_siguiente_token.py` | ilustrativos hasta correr `datos_siguiente_token.py` (Qwen2.5-0.5B) |
 | 4 | S04 atención | `escenas/s04_atencion.py` | ilustrativos hasta correr `datos_atencion.py` (BETO) |

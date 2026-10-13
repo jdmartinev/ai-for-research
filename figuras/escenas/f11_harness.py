@@ -15,6 +15,10 @@ PARTS = [("Instrucciones", "CLAUDE.md / AGENTS.md"),
          ("Verificación", "tests, linters, revisor independiente")]
 
 
+REFS = {"Instrucciones": "Parte 3", "Contexto": "diap. 16", "Herramientas": "Parte 2", "Skills": "Parte 3",
+        "Permisos": "Parte 3", "Verificación": "los jueces"}
+
+
 class Harness(Scene):
     def construct(self):
         model = Node("modelo", size=34, width=2.6).move_to([0, 0, 0])
@@ -28,7 +32,8 @@ class Harness(Scene):
             t = T(title, size=26, color=AMBER if judge else TEXT, weight=BOLD)
             e = T(ex, size=19, color=MUTED, font=MONO if ".md" in ex else FONT)
             VGroup(t, e).arrange(DOWN, buff=0.12, aligned_edge=LEFT).move_to(box).align_to(box.get_left() + RIGHT * 0.3, LEFT)
-            cards.add(VGroup(box, t, e).move_to([x, y, 0]))
+            ref = T(REFS[title], size=16, color=AMBER if judge else GRAY, font=MONO).move_to(box.get_corner(UP + RIGHT) + LEFT * 0.2 + DOWN * 0.2, aligned_edge=UP + RIGHT)
+            cards.add(VGroup(box, t, e, ref).move_to([x, y, 0]))
         arrows = VGroup()
         for c in cards:
             side = c[0].get_right() if c.get_x() < 0 else c[0].get_left()
@@ -47,4 +52,5 @@ class Harness(Scene):
         lab.move_to([0, 2.775, 0])
         bg = RoundedRectangle(width=lab.width + 0.4, height=0.4, corner_radius=0.1, fill_color=BG, fill_opacity=1,
                               stroke_width=0).move_to(lab)
-        self.add(frame, bg, lab, arrows, back, back_t, cards, model)
+        mref = T("Parte 1", size=16, color=GRAY, font=MONO).next_to(model, UP, buff=0.12)
+        self.add(frame, bg, lab, arrows, back, back_t, cards, model, mref)
