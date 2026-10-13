@@ -7,6 +7,7 @@ from the Slides-artifact HTML files so the .pptx and the web deck stay identical
 """
 import html
 import re
+import subprocess
 from pathlib import Path
 
 from pptx import Presentation
@@ -14,6 +15,7 @@ from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Emu, Inches, Pt
+from lxml import etree
 
 HERE = Path(__file__).resolve().parent
 SLIDES = HERE / "web" / "slides"
@@ -161,12 +163,43 @@ def placeholder(slide, d, x=X0, y=Y_BODY, w=CW, h=3.45, scene=None):
          align=PP_ALIGN.CENTER, name="Figure description")
 
 
+P_NS = "http://schemas.openxmlformats.org/presentationml/2006/main"
+AUTOPLAY = """<p:timing xmlns:p="{ns}"><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>
+<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>
+<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>
+<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>
+<p:par><p:cTn id="5" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="afterEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>
+<p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="6" dur="{dur}" fill="hold"/><p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl></p:cBhvr></p:cmd>
+</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn>
+<p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>
+<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>
+<p:video><p:cMediaNode vol="80000"><p:cTn id="7" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst></p:cTn><p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl></p:cMediaNode></p:video>
+</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>"""
+
+
+def movie(slide, mp4, x, y, w, h, poster):
+    """Video incrustado que arranca solo al llegar a la diapositiva (como «Iniciar: automáticamente»)."""
+    mv = slide.shapes.add_movie(str(mp4), Inches(x), Inches(y), Inches(w), Inches(h),
+                                poster_frame_image=str(poster), mime_type="video/mp4")
+    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                         "-of", "csv=p=0", str(mp4)]).decode())
+    sld = slide._element
+    for old in sld.findall(f"{{{P_NS}}}timing"):
+        sld.remove(old)
+    timing = etree.fromstring(AUTOPLAY.format(ns=P_NS, dur=int(dur * 1000), spid=mv.shape_id))
+    ext = sld.find(f"{{{P_NS}}}extLst")
+    if ext is not None:
+        ext.addprevious(timing)
+    else:
+        sld.append(timing)
+    return mv
+
+
 def media(slide, key, x, y, w, h):
     """Video (mp4 con su póster png) o figura png, en la caja dada."""
     mp4, png = RENDER / f"{key}.mp4", RENDER / f"{key}.png"
     if mp4.exists():
-        return slide.shapes.add_movie(str(mp4), Inches(x), Inches(y), Inches(w), Inches(h),
-                                      poster_frame_image=str(png), mime_type="video/mp4")
+        return movie(slide, mp4, x, y, w, h, png)
     return slide.shapes.add_picture(str(png), Inches(x), Inches(y), Inches(w), Inches(h))
 
 
@@ -222,8 +255,7 @@ def build():
     s, d = S["s01"], D["s01"]
     header(s, d)
     vw, vh = 11.3, 11.3 * 720 / 1920
-    s.shapes.add_movie(str(VIDEO), Inches(X0), Inches(Y_BODY), Inches(vw), Inches(vh),
-                       poster_frame_image=str(POSTER), mime_type="video/mp4")
+    movie(s, VIDEO, X0, Y_BODY, vw, vh, POSTER)
     rx = X0 + vw + 0.5
     text(s, rx, Y_BODY, 18.25 - rx, 3.2, [
         [("El agente edita ", {}), ("train.py", {"font": MONO, "bold": True}), (", entrena 5 minutos y conserva el cambio solo si la validación mejora.", {})],
