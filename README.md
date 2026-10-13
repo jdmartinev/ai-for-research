@@ -54,18 +54,18 @@ diapositiva) y las figuras PNG. `assets.json` guarda las direcciones de los vide
 | 14–15 | Bloque y pila del transformer | `escenas/s_bloque.py`, `s_pila.py` | ilustrativos |
 | 16 | F16 ventana de contexto | `escenas/f16_ventana.py` | segmentos ilustrativos |
 | 17 | F17 leyes de escala | `escenas/f17_escala.py` | calculadas con el ajuste de Chinchilla |
-| 33 | F32 BrowseComp | `escenas/f32_browsecomp.py` | Wei et al. (2025), vía Asai |
+| 32 | F32 BrowseComp | `escenas/f32_browsecomp.py` | Wei et al. (2025), vía Asai |
 | 1 | S01 registro de autoresearch | `escena01/scene01_autoresearch_log.py` | ilustrativos hasta poner `results.tsv` |
-| 3 | F03 siguiente token | `escenas/f03_siguiente_token.py` | ilustrativos hasta correr `datos_siguiente_token.py` (Qwen2.5-0.5B) |
-| 4 | S04 atención | `escenas/s04_atencion.py` | ilustrativos hasta correr `datos_atencion.py` (BETO) |
-| 6 | S06 verificador | `escenas/s06_verificador.py` | REINFORCE de juguete, calculado |
-| 7 | S07 imágenes → tokens | `escenas/s07_imagenes.py` | imagen sintética; pon `input.jpg` para usar un cuadro tuyo |
-| 9 | S09 ciclo del agente | `escenas/s09_agente.py` | traza ilustrativa; `trace.json` la reemplaza |
-| 10 | F10 deep research | `escenas/f10_deep_research.py` | arquitectura de Anthropic (2025) |
-| 11 | F11 harness | `escenas/f11_harness.py` | conceptual |
-| 16 | S16 autoresearch | `escenas/s16_autoresearch.py` | mismo registro que S01 |
-| 17 | S17 torneo Co-Scientist | `escenas/s17_torneo.py` | torneo ilustrativo, Elo calculado; `hipotesis.txt` pone tus títulos |
-| 18 | S18 evolución | `escenas/s18_evolucion.py` | búsqueda evolutiva de juguete, calculada; cierra con cifras de ERA y AlphaEvolve |
+| 5 | F03 siguiente token | `escenas/f03_siguiente_token.py` | ilustrativos hasta correr `datos_siguiente_token.py` (Qwen2.5-0.5B) |
+| 13 | S04 atención | `escenas/s04_atencion.py` | ilustrativos hasta correr `datos_atencion.py` (BETO) |
+| 21 | S06 verificador | `escenas/s06_verificador.py` | REINFORCE de juguete, calculado |
+| 23 | S07 imágenes → tokens | `escenas/s07_imagenes.py` | imagen sintética; pon `input.jpg` para usar un cuadro tuyo |
+| 28 | S09 ciclo del agente | `escenas/s09_agente.py` | traza ilustrativa; `trace.json` la reemplaza |
+| 31 | F10 deep research | `escenas/f10_deep_research.py` | arquitectura de Anthropic (2025) |
+| 35 | F11 harness | `escenas/f11_harness.py` | conceptual |
+| 45 | S16 autoresearch | `escenas/s16_autoresearch.py` | mismo registro que S01 |
+| 48 | S17 torneo Co-Scientist | `escenas/s17_torneo.py` | torneo ilustrativo, Elo calculado; `hipotesis.txt` pone tus títulos |
+| 50 | S18 evolución | `escenas/s18_evolucion.py` | búsqueda evolutiva de juguete, calculada; cierra con cifras de ERA y AlphaEvolve |
 
 Cada video que usa datos ilustrativos lo dice en la esquina inferior derecha. Para renderizar
 (Manim CE 0.21, fuentes IBM Plex Sans, JetBrains Mono y Space Grotesk instaladas):
