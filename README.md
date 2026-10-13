@@ -83,7 +83,7 @@ Copia el `.mp4` y su último cuadro como `.png` a `figuras/render/` con el nombr
 
 ## Pendientes antes de la charla
 
-- [ ] Correr `datos_siguiente_token.py` y `datos_atencion.py` en tu máquina (necesitan Hugging Face) y re-renderizar F03 y S04
+- [x] F03 y S04 quedan con datos ilustrativos (decisión del expositor); los scripts `datos_*.py` siguen ahí por si se quieren los reales
 - [ ] Poner tu `results.tsv` real de autoresearch y re-renderizar S01 y S16
 - [ ] Opcional: `input.jpg` (S07), `trace.json` (S09) y `hipotesis.txt` (S17) con material tuyo
 - [ ] Correr la demo del exoesqueleto y grabar el corte de 60 s (`demo-exo-deep-research/README.md`)
