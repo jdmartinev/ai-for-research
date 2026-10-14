@@ -205,11 +205,10 @@ def note_warn(s, d, y):
 
 # ---------------------------------------------------------------- kinds
 def k_cover(s, d):
-    text(s, 1.71, 4.0, 12.0, 2.4, [[("¿Quién decide qué cuenta como ", {}), ("mejor", {"color": AMBER}), ("?", {})]],
-         size=64, bold=True, color=WHITE, line=0.95)
-    text(s, 1.71, 6.45, 12.0, 0.9, "IA para la investigación: de la atención al descubrimiento autónomo", size=26, color=WHITE)
-    text(s, 1.71, 7.45, 12.0, 0.5, "Juan David Martínez Vargas, Ph.D. · Universidad EAFIT", size=20, color=ICE)
-    text(s, 1.71, 8.0, 12.0, 0.5, "15 de octubre de 2026", size=18, color=ICE)
+    text(s, 1.71, 3.55, 12.4, 2.9, "Avances en IA y aprendizaje automático como herramientas de investigación",
+         size=48, bold=True, color=WHITE, line=0.95)
+    text(s, 1.71, 6.45, 12.0, 0.9, [[("¿Quién decide qué cuenta como ", {}), ("mejor", {"color": AMBER}), ("?", {})]], size=28, color=WHITE)
+    text(s, 1.71, 7.45, 12.0, 0.5, "Juan David Martínez Vargas, Ph.D. · Universidad EAFIT · 15 de octubre de 2026", size=20, color=ICE)
 
 
 def k_media(s, d):

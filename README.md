@@ -1,4 +1,4 @@
-# ¿Quién decide qué cuenta como mejor? — IA para la investigación
+# Avances en IA y aprendizaje automático como herramientas de investigación
 
 Material de la charla de 40 minutos de Juan David Martínez Vargas, Ph.D. (Universidad EAFIT) para el
 **1er Simposio Somer Investiga: Métodos e Innovación en Investigación Clínica**.
