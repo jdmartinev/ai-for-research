@@ -3,5 +3,5 @@
 <h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:600;line-height:1.1;color:#ECEEF0">La atención deja que cada token decida a qué otros tokens mirar</h2>
 <img src="/_blob/1799175c238d6683b7ab91aeaf424a24" data-video="/_blob/475591a64796411b07ef096970fb1f46" alt="La palabra «pesada» atiende a las demás palabras; el mayor peso cae en «caja»; termina en la fórmula softmax(QKᵀ/√d)V" style="width:1466px;height:549px;object-fit:contain">
 <p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7A8699">13 · Vaswani et al. (2017), Attention Is All You Need</p>
-<aside>Cada token hace una consulta (Q) y la compara con la clave (K) de los demás; el softmax vuelve esos puntajes pesos que suman 1, y con ellos mezcla los valores (V). Q, K y V tienen colores fijos que no se usan en otra parte. Los pesos son ilustrativos hasta correr datos_atencion.py con BETO.</aside>
+<aside>Así funciona la atención. La palabra «pesada» hace una pregunta, y la compara con cada una de las otras palabras. El resultado son pesos que suman uno: cuánto mira a cada palabra. Aquí el peso mayor cae en «caja», que es justamente a lo que se refiere. Con esos pesos, «pesada» mezcla la información de las otras palabras. Esa es la fórmula de abajo, y es la pieza central de todos los modelos actuales.</aside>
 </section>

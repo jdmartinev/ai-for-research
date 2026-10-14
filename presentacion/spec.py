@@ -440,3 +440,10 @@ SECTIONS = {
     "p4": ("Parte 4: IA que investiga, según los papers de 2025 y 2026", "s16"),
     "p5": ("Parte 5: evaluar al juez, límites y qué hacer el lunes", "jueces"),
 }
+
+# El discurso (lo que se dice en voz alta) reemplaza las notas de cada diapositiva.
+# Las notas de contexto anteriores quedan en notas_contexto.md.
+from discurso import DISCURSO  # noqa: E402
+
+for _d in SLIDES:
+    _d["notes"] = DISCURSO[_d["id"]]

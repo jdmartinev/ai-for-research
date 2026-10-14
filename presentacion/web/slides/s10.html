@@ -8,5 +8,5 @@
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1.0;color:#ECEEF0">80%</p><p style="font-size:24px;color:#B9C3CF">del desempeño lo explica solo el uso de tokens</p></div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7A8699">31 · Hadfield et al. (2025), How we built our multi-agent research system, Anthropic</p>
-<aside>Patrón orquestador-trabajadores: el líder guarda su plan en memoria y lanza subagentes que buscan en paralelo, cada uno con su propia ventana de contexto. El «¿basta?» es el juez en tiempo de ejecución. Al final, un agente de citas asocia cada afirmación con su fuente. Ojo: es una evaluación interna del propio fabricante.</aside>
+<aside>Así funciona por dentro el sistema de deep research de Anthropic. Un agente líder recibe la pregunta, hace un plan y reparte el trabajo entre varios subagentes que buscan en paralelo, cada uno con su propia ventana de contexto. El líder decide si con eso basta; ese rombo ámbar es el juez. Al final, otro agente revisa que cada afirmación tenga su fuente. En su evaluación interna, esto supera en 90 por ciento a un solo agente, pero gasta unas quince veces más tokens que una conversación normal.</aside>
 </section>
