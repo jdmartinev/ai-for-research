@@ -21,9 +21,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import spec  # noqa: E402
 
-BASE = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "plantilla" / "base_23_diapositivas.pptx"
-RENDER = Path(sys.argv[2]) if len(sys.argv) > 2 else HERE.parent / "figuras" / "render"
-OUT = Path(sys.argv[3]) if len(sys.argv) > 3 else HERE / "IA-para-la-investigacion_Simposio-Somer.pptx"
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+BASE = Path(ARGS[0]) if len(ARGS) > 0 else HERE / "plantilla" / "base_23_diapositivas.pptx"
+RENDER = Path(ARGS[1]) if len(ARGS) > 1 else HERE.parent / "figuras" / "render"
+OUT = Path(ARGS[2]) if len(ARGS) > 2 else HERE / "IA-para-la-investigacion_Simposio-Somer.pptx"
+NO_VIDEO = "--sin-videos" in sys.argv   # pone la imagen fija de cada escena; el video se inserta a mano
 
 NAVY, BLUE, BODY, MUTED = RGBColor(0x07, 0x37, 0x63), RGBColor(0x15, 0x65, 0xC0), RGBColor(0x4A, 0x4F, 0x57), RGBColor(0x75, 0x70, 0x70)
 CARD, CARD_LINE, PH_FILL, PH_LINE = RGBColor(0xEE, 0xF3, 0xFA), RGBColor(0xC9, 0xD8, 0xEE), RGBColor(0xF4, 0xF8, 0xFD), RGBColor(0x7F, 0xA7, 0xD9)
@@ -165,7 +167,7 @@ AUTOPLAY = """<p:timing xmlns:p="{ns}"><p:tnLst><p:par><p:cTn id="1" dur="indefi
 
 def media(slide, key, x, y, w, h, alt=""):
     mp4, png = RENDER / f"{key}.mp4", RENDER / f"{key}.png"
-    if mp4.exists():
+    if mp4.exists() and not NO_VIDEO:
         mv = slide.shapes.add_movie(str(mp4), Inches(x), Inches(y), Inches(w), Inches(h),
                                     poster_frame_image=str(png), mime_type="video/mp4")
         dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
