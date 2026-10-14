@@ -91,7 +91,7 @@ def note_block(d):
 # ---------------------------------------------------------------- kinds
 def k_cover(d):
     return [f'<section id="cover" data-transition="fade" style="background:{BG};color:{TEXT};font-family:{BODY};padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">',
-            f'<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:{AMBER}">1er Simposio Somer Investiga · [Fecha]</p>',
+            f'<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:{AMBER}">1er Simposio Somer Investiga · 15 de octubre de 2026</p>',
             f'<h1 style="font-family:{DISP};font-size:120px;font-weight:700;line-height:1.05;color:{TEXT}">¿Quién decide qué cuenta como <span style="color:{AMBER}">mejor</span>?</h1>',
             f'<p style="font-size:44px;color:{MUTED}">IA para la investigación: de la atención al descubrimiento autónomo</p>',
             f'<p style="font-size:32px;color:{FOOT}">Juan David Martínez Vargas, Ph.D. · Universidad EAFIT</p>',

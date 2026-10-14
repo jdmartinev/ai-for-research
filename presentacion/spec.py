@@ -13,7 +13,7 @@ A, M, G, Tt = "a", "m", "g", "t"
 SLIDES = [
     # ------------------------------------------------------------------ gancho
     dict(id="cover", kind="cover",
-         notes="Portada. Completa lugar y fecha. Déjala en pantalla mientras la gente se sienta."),
+         notes="Portada. Déjala en pantalla mientras la gente se sienta."),
     dict(id="s01", kind="media", eyebrow=P0, media="S01", dark=True,
          title="Un agente ya puede correr un ciclo de investigación toda la noche, sin nosotros",
          alt="Un registro de autoresearch avanza en una terminal; cada experimento queda conservado en ámbar o descartado en gris mientras la pérdida baja en escalones",
@@ -428,7 +428,7 @@ SLIDES = [
          cards=[dict(t="1 · Contexto", body="Un CLAUDE.md con tu campo y tus reglas, y tus propios papers como contexto"),
                 dict(t="2 · Skills", body="Empaqueta lo que repites; empieza por /review-paper sobre tu próximo borrador"),
                 dict(t="3 · Ciclos", body="Ciclos autónomos solo donde tengas una métrica barata y honesta")],
-         src="Gracias · [contacto] · Diapositivas, fuentes y demo: github.com/jdmartinev/ai-for-research",
+         src="Gracias · Diapositivas, fuentes y demo: github.com/jdmartinev/ai-for-research",
          notes="Haz una pausa en el titular antes de mostrar los tres niveles. Cada nivel le pasa más trabajo al agente y exige un juez más explícito: en el 1 juzgas tú cada respuesta; en el 2 tu criterio queda escrito en el skill; en el 3, en la métrica. Luego abre a preguntas."),
 ]
 

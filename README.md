@@ -87,7 +87,7 @@ Copia el `.mp4` y su último cuadro como `.png` a `figuras/render/` con el nombr
 - [ ] Poner tu `results.tsv` real de autoresearch y re-renderizar S01 y S16
 - [ ] Opcional: `input.jpg` (S07), `trace.json` (S09) y `hipotesis.txt` (S17) con material tuyo
 - [ ] Correr la demo del exoesqueleto y grabar el corte de 60 s (`demo-exo-deep-research/README.md`)
-- [ ] Completar contacto y enlace o QR en la diapositiva de cierre
+- [x] Fecha en la portada (15 de octubre de 2026) y enlace al repo en el cierre
 - [ ] Revisar la política de EAFIT sobre uso de IA y autoría (notas de la diapositiva 21)
 
 ## Notas sobre fuentes y derechos
