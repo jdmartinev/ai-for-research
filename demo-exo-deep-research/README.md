@@ -83,7 +83,7 @@ evaluadores humanos encontraron fallas que la rúbrica no veía.
 - Muchos artículos están detrás de muros de pago; el verificador marcará esos casos como «no se
   pudo abrir».
 
-## Para la charla (diapositivas 10 y 13)
+## Para la charla (diapositivas 31 y 52)
 
 1. **La noche antes:** corre la pregunta 6 completa y guarda la carpeta `salidas/`.
 2. **Graba** la terminal mientras corre (o al menos el momento en que se lanzan los investigadores

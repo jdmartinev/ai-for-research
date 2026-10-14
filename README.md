@@ -85,7 +85,7 @@ Copia el `.mp4` y su último cuadro como `.png` a `figuras/render/` con el nombr
 ## Pendientes antes de la charla
 
 - [x] F03 y S04 quedan con datos ilustrativos (decisión del expositor); los scripts `datos_*.py` siguen ahí por si se quieren los reales
-- [ ] Poner tu `results.tsv` real de autoresearch y re-renderizar S01 y S16
+- [x] S01 y S16 quedan con datos ilustrativos (opcional: tu `results.tsv` real de autoresearch)
 - [ ] Opcional: `input.jpg` (S07), `trace.json` (S09) y `hipotesis.txt` (S17) con material tuyo
 - [ ] Correr la demo del exoesqueleto y grabar el corte de 60 s (`demo-exo-deep-research/README.md`)
 - [x] Fecha en la portada (15 de octubre de 2026) y enlace al repo en el cierre
