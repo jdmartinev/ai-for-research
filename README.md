@@ -15,6 +15,7 @@ trabajo pasa de producir resultados a juzgarlos.
 | [`presentacion/`](presentacion/) | La presentación en la plantilla del simposio (`.pptx`, 23 diapositivas con notas del expositor y los videos de las escenas), el script que la genera y la fuente web del deck |
 | [`figuras/`](figuras/) | Las escenas Manim y las figuras (`escenas/`, `escena01/`), los videos y PNG ya renderizados (`render/`) y `FIGURE_PROMPTS.md`, el brief original |
 | [`demo-exo-deep-research/`](demo-exo-deep-research/) | Sistema de deep research multiagente para Claude Code sobre exoesqueletos: líder, investigadores en paralelo, verificador de citas y juez con rúbrica |
+| [`taller-skills/`](taller-skills/) | Taller paso a paso de CLAUDE.md y skills: `/revisar-figura` (con scripts de color y extracción de PDF), los skills de Bäckman y `/investigar` |
 | [`revision-literatura/`](revision-literatura/) | Revisión de literatura con las 21 fuentes de la charla, verificadas contra los originales |
 
 ## Estructura de la charla (56 diapositivas, ~45 s cada una)

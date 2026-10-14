@@ -15,3 +15,10 @@ demo-exo-deep-research/salidas/*
 !demo-exo-deep-research/salidas/.gitkeep
 
 .DS_Store
+
+# Taller: papers y resultados locales
+taller-skills/papers/*
+!taller-skills/papers/.gitkeep
+taller-skills/revisiones/*
+!taller-skills/revisiones/.gitkeep
+taller-skills/reviews/

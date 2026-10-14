@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(pdftotext *)",
+      "Bash(pdftoppm *)",
+      "Bash(pdfinfo *)",
+      "Edit(revisiones/**)"
+    ],
+    "deny": [
+      "Edit(papers/**)",
+      "Bash(rm *)"
+    ]
+  }
+}
