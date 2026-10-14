@@ -378,8 +378,14 @@ DISCURSO = {
         "Es un sistema de deep research en Claude Code, y no tiene código: son seis archivos de texto. "
         "Un líder que planea, investigadores que buscan, un verificador que abre cada fuente "
         "y un juez que califica con una rúbrica. "
-        "Le pregunto qué controles de exoesqueletos de tobillo reducen el costo metabólico al caminar… "
-        "El harness se escribe, no se programa. Está en el repositorio, para que lo usen."
+        "Le pregunté qué controles de exoesqueletos de tobillo reducen el costo metabólico al caminar. "
+        "Hizo dos rondas y citó veinticuatro fuentes; un verificador intentó abrir cada una, y lo que no pudo abrir no entró como hecho. "
+        "El juez le puso 0,86: aprobado. Pero encontró tres fallas reales, entre ellas una contradicción "
+        "entre dos estudios que el reporte no resolvió. "
+        "Y miren esto: el juez dijo que faltaba un archivo de verificación. El archivo estaba ahí; "
+        "lo buscó con otro nombre. El juez también se equivoca. "
+        "Por eso la pregunta de esta charla, quién decide qué cuenta como mejor, no tiene respuesta automática: "
+        "el último juez son ustedes. Todo está en el repositorio, para que lo usen."
     ),
     "jueces": (
         "Última parte. Si todo depende del juez, hay que preguntar: ¿qué tan bueno es el juez? "
