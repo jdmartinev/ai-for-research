@@ -22,3 +22,4 @@ taller-skills/papers/*
 taller-skills/revisiones/*
 !taller-skills/revisiones/.gitkeep
 taller-skills/reviews/
+.~lock.*#
